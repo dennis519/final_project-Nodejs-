@@ -25,11 +25,15 @@ app.get('/', async (req, res) => {
     // })
     res.render('default', {  
         title: '首頁',  
-        users: ['Fisheep', 'Fiona', 'Alice', 'Bob']
-        //users: userArr
+        //users: ['Fisheep', 'Fiona', 'Alice', 'Bob']
+        users: userArr
     });  
 });
 
+app.get("/dennis", async (req,res ) => {
+    res.send("<h1>dennis</h1>");
+    
+})
 app.get("/firebase-test", async (req, res) => {
     let html = '';
     let data = await db.collection('classA').get();
@@ -90,6 +94,7 @@ app.get('*', (req, res) => {
     res.send('No Content');  
 });
 
-app.listen(3000, () => {  
+let port = process.env.PORT || 3000
+app.listen(port, () => {  
     console.log('Listening on port 3000');  
 }); 
